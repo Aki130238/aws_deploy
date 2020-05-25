@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.11.0'
 # デプロイするアプリケーション名
-set :application, 'achieve'
+set :application, 'aws_deploy'
 # cloneするgitのレポジトリ
 # （xxxxxxxx：ユーザ名、yyyyyyyy：アプリケーション名）
 set :repo_url, 'https://github.com/makototsuta/aws_deploy.git'
