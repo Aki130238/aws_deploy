@@ -22,44 +22,4 @@ ActiveRecord::Schema.define(version: 2020_05_13_122147) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "labellings", force: :cascade do |t|
-    t.bigint "task_id"
-    t.bigint "label_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["label_id"], name: "index_labellings_on_label_id"
-    t.index ["task_id"], name: "index_labellings_on_task_id"
-  end
-
-  create_table "labels", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.string "task_name", null: false
-    t.integer "priority", null: false
-    t.string "status", limit: 10, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.date "deadline"
-    t.bigint "user_id"
-    t.index ["task_name"], name: "index_tasks_on_task_name"
-    t.index ["user_id"], name: "index_tasks_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "password_digest"
-    t.boolean "admin", default: false, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-  end
-
-  add_foreign_key "labellings", "labels"
-  add_foreign_key "labellings", "tasks"
-  add_foreign_key "tasks", "users"
 end
